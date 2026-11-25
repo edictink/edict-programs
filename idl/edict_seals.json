@@ -1,0 +1,4338 @@
+{
+  "address": "6Eusr5CdS6DMCz9csfvGP24DqLxrPt4sBaeamDijL87f",
+  "metadata": {
+    "name": "edict_seals",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Edict Seal: a Metaplex Core membership NFT whose mint buys and burns $EDICT, with an equal-share pot (ARCHITECTURE section 4, docs/validation/P2-01_SEAL_DESIGN.md)."
+  },
+  "instructions": [
+    {
+      "name": "accept_admin",
+      "discriminator": [
+        112,
+        42,
+        45,
+        90,
+        116,
+        181,
+        13,
+        170
+      ],
+      "accounts": [
+        {
+          "name": "new_admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pending",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "apply_price_change",
+      "docs": [
+        "Anyone, after the eta: applies the queued price change to the tiers above the one being minted."
+      ],
+      "discriminator": [
+        160,
+        215,
+        207,
+        47,
+        216,
+        86,
+        183,
+        69
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pending",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "apply_rule_set",
+      "docs": [
+        "Anyone, after the eta: writes the queued allow list to the collection's Royalties plugin."
+      ],
+      "discriminator": [
+        246,
+        7,
+        213,
+        137,
+        32,
+        176,
+        226,
+        112
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pending",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "collection",
+          "writable": true
+        },
+        {
+          "name": "collection_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "core_program",
+          "address": "CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "cancel_price_change",
+      "discriminator": [
+        250,
+        41,
+        50,
+        135,
+        74,
+        220,
+        152,
+        101
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pending",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "cancel_rule_set",
+      "discriminator": [
+        79,
+        66,
+        187,
+        131,
+        59,
+        176,
+        254,
+        203
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pending",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "cancel_seal",
+      "docs": [
+        "Admin, only before the opening: cancels the Seal and sends the free pot to the fixed buyback wallet."
+      ],
+      "discriminator": [
+        41,
+        151,
+        147,
+        20,
+        84,
+        80,
+        204,
+        239
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "buyback_wallet",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "claim_vault",
+      "docs": [
+        "The current owner of a Seal: claims its accumulator share and, once, its genesis share."
+      ],
+      "discriminator": [
+        87,
+        111,
+        176,
+        185,
+        53,
+        172,
+        227,
+        137
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "docs": [
+            "The current owner of the Seal asset: signs and receives."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "asset"
+        },
+        {
+          "name": "seal",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  101,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "asset"
+              }
+            ]
+          }
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "finalize_genesis",
+      "docs": [
+        "Anyone, 24 hours after the opening: shares genesis among the eligible Seals minted so far."
+      ],
+      "discriminator": [
+        14,
+        52,
+        206,
+        170,
+        165,
+        216,
+        46,
+        149
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "forfeit_burned",
+      "docs": [
+        "Anyone, for a Seal whose Core asset was burned: returns its unclaimed shares to the pot as income and removes it from",
+        "the active set (owner decision 2026-11-09)."
+      ],
+      "discriminator": [
+        254,
+        37,
+        222,
+        155,
+        224,
+        56,
+        50,
+        99
+      ],
+      "accounts": [
+        {
+          "name": "asset",
+          "docs": [
+            "the handler. Its address ties it to the `Seal` record by the seeds below: only an asset the program minted has one."
+          ]
+        },
+        {
+          "name": "seal",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  101,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "asset"
+              }
+            ]
+          }
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "init_collection",
+      "docs": [
+        "Upgrade authority, once: creates the Core collection with the Royalties plugin (500 bps, pot 60 / Treasury 40)."
+      ],
+      "discriminator": [
+        244,
+        242,
+        133,
+        0,
+        152,
+        187,
+        144,
+        139
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "docs": [
+            "The upgrade authority of this program. Pays the collection's rent."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "collection",
+          "docs": [
+            "The new collection: a fresh keypair that signs the transaction."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "collection_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "core_program",
+          "address": "CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d"
+        },
+        {
+          "name": "this_program",
+          "address": "6Eusr5CdS6DMCz9csfvGP24DqLxrPt4sBaeamDijL87f"
+        },
+        {
+          "name": "program_data"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "InitCollectionArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "init_config",
+      "docs": [
+        "Upgrade authority: creates `Config`, `State`, `Pending` and funds the pot vault; verifies every pinned account."
+      ],
+      "discriminator": [
+        23,
+        235,
+        115,
+        232,
+        168,
+        96,
+        1,
+        231
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "docs": [
+            "The upgrade authority of this program. Pays the rent of the accounts and of the pot vault."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pending",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "docs": [
+            "The Seal pot vault: a system-owned PDA with no data, funded here to its rent minimum."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "swapper",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  119,
+                  97,
+                  112,
+                  112,
+                  101,
+                  114
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "collection_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "edict_mint"
+        },
+        {
+          "name": "ll_pool"
+        },
+        {
+          "name": "ll_global_config"
+        },
+        {
+          "name": "ll_platform_config"
+        },
+        {
+          "name": "cpmm_config"
+        },
+        {
+          "name": "launchlab_program"
+        },
+        {
+          "name": "cpmm_program"
+        },
+        {
+          "name": "treasury",
+          "docs": [
+            "exist yet, never a program account (review R5). Its key must equal the `treasury` argument."
+          ]
+        },
+        {
+          "name": "buyback_wallet"
+        },
+        {
+          "name": "this_program",
+          "address": "6Eusr5CdS6DMCz9csfvGP24DqLxrPt4sBaeamDijL87f"
+        },
+        {
+          "name": "program_data"
+        },
+        {
+          "name": "edict_token_program"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "InitConfigArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "mint_reserve",
+      "docs": [
+        "The owner wallet: mints 1 to 5 team Seals to the Treasury, free. The first call opens the mint."
+      ],
+      "discriminator": [
+        6,
+        54,
+        228,
+        155,
+        24,
+        75,
+        125,
+        45
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "docs": [
+            "The owner wallet: pays the rents of the Seals and signs."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "docs": [
+            "The pot vault (read for the genesis amount and the sync)."
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "collection_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "collection",
+          "writable": true
+        },
+        {
+          "name": "recipient"
+        },
+        {
+          "name": "core_program",
+          "address": "CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "numbers",
+          "type": {
+            "vec": "u16"
+          }
+        }
+      ]
+    },
+    {
+      "name": "mint_seal_cpmm",
+      "docs": [
+        "Anyone: the public mint on $EDICT's CPMM pool (after the migration)."
+      ],
+      "discriminator": [
+        238,
+        135,
+        73,
+        251,
+        216,
+        60,
+        156,
+        157
+      ],
+      "accounts": [
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "treasury",
+          "writable": true
+        },
+        {
+          "name": "swapper",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  119,
+                  97,
+                  112,
+                  112,
+                  101,
+                  114
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "collection_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "edict_mint",
+          "writable": true
+        },
+        {
+          "name": "swapper_edict",
+          "docs": [
+            "The swapper's associated $EDICT account, pinned in Config at init."
+          ],
+          "writable": true
+        },
+        {
+          "name": "swapper_wsol",
+          "docs": [
+            "The swapper's associated wSOL account (created idempotently by the client in the same transaction)."
+          ],
+          "writable": true
+        },
+        {
+          "name": "wsol_mint",
+          "address": "So11111111111111111111111111111111111111112"
+        },
+        {
+          "name": "ll_pool"
+        },
+        {
+          "name": "cpmm_program"
+        },
+        {
+          "name": "cpmm_authority"
+        },
+        {
+          "name": "cpmm_config"
+        },
+        {
+          "name": "pool",
+          "writable": true
+        },
+        {
+          "name": "vault_wsol",
+          "writable": true
+        },
+        {
+          "name": "vault_edict",
+          "writable": true
+        },
+        {
+          "name": "observation",
+          "writable": true
+        },
+        {
+          "name": "collection",
+          "writable": true
+        },
+        {
+          "name": "asset",
+          "docs": [
+            "The new Seal asset: a fresh keypair that signs the transaction."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "seal",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  101,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "asset"
+              }
+            ]
+          }
+        },
+        {
+          "name": "core_program",
+          "address": "CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d"
+        },
+        {
+          "name": "edict_token_program"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "min_out",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "mint_seal_curve",
+      "docs": [
+        "Anyone: the public mint on $EDICT's LaunchLab curve (before the graduation)."
+      ],
+      "discriminator": [
+        46,
+        111,
+        12,
+        83,
+        109,
+        140,
+        132,
+        198
+      ],
+      "accounts": [
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "treasury",
+          "writable": true
+        },
+        {
+          "name": "swapper",
+          "docs": [
+            "LaunchLab's `buy_exact_in` declares its payer `mut` (Anchor ConstraintMut 2000 otherwise, docs/validation/SEALS_VENUE.md)."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  119,
+                  97,
+                  112,
+                  112,
+                  101,
+                  114
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "collection_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "edict_mint",
+          "writable": true
+        },
+        {
+          "name": "swapper_edict",
+          "docs": [
+            "The swapper's associated $EDICT account, pinned in Config at init."
+          ],
+          "writable": true
+        },
+        {
+          "name": "swapper_wsol",
+          "docs": [
+            "The swapper's associated wSOL account (created idempotently by the client in the same transaction)."
+          ],
+          "writable": true
+        },
+        {
+          "name": "wsol_mint",
+          "address": "So11111111111111111111111111111111111111112"
+        },
+        {
+          "name": "launchlab_program"
+        },
+        {
+          "name": "ll_authority"
+        },
+        {
+          "name": "ll_event_authority"
+        },
+        {
+          "name": "ll_global_config"
+        },
+        {
+          "name": "ll_platform_config"
+        },
+        {
+          "name": "pool",
+          "writable": true
+        },
+        {
+          "name": "base_vault",
+          "writable": true
+        },
+        {
+          "name": "quote_vault",
+          "writable": true
+        },
+        {
+          "name": "platform_fee_vault",
+          "writable": true
+        },
+        {
+          "name": "creator_fee_vault",
+          "writable": true
+        },
+        {
+          "name": "collection",
+          "writable": true
+        },
+        {
+          "name": "asset",
+          "docs": [
+            "The new Seal asset: a fresh keypair that signs the transaction."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "seal",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  101,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "asset"
+              }
+            ]
+          }
+        },
+        {
+          "name": "core_program",
+          "address": "CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d"
+        },
+        {
+          "name": "edict_token_program"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "min_out",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "propose_admin",
+      "discriminator": [
+        121,
+        214,
+        199,
+        212,
+        87,
+        39,
+        117,
+        234
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pending",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "new_admin",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "queue_price_change",
+      "docs": [
+        "Admin: queues a new base and factor behind the 24 hour timelock."
+      ],
+      "discriminator": [
+        204,
+        124,
+        248,
+        164,
+        88,
+        226,
+        225,
+        199
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pending",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "base_lamports",
+          "type": "u64"
+        },
+        {
+          "name": "factor_bps",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "queue_rule_set",
+      "docs": [
+        "Admin: queues a new royalty allow list (the System Program required) behind the timelock."
+      ],
+      "discriminator": [
+        76,
+        188,
+        240,
+        112,
+        223,
+        121,
+        44,
+        198
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pending",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "rules",
+          "type": {
+            "vec": "pubkey"
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_art",
+      "docs": [
+        "Admin, before the opening: the metadata folder and the art manifest hash."
+      ],
+      "discriminator": [
+        54,
+        55,
+        125,
+        75,
+        121,
+        255,
+        89,
+        71
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "base_uri",
+          "type": "string"
+        },
+        {
+          "name": "art_hash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_paused",
+      "docs": [
+        "Admin: stops or resumes PUBLIC mints (claims and cranks keep working)."
+      ],
+      "discriminator": [
+        91,
+        60,
+        125,
+        192,
+        176,
+        225,
+        166,
+        218
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "paused",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "set_team_numbers",
+      "docs": [
+        "Admin, once, before the opening: the 30 team numbers."
+      ],
+      "discriminator": [
+        145,
+        140,
+        155,
+        66,
+        251,
+        144,
+        38,
+        127
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "numbers",
+          "type": {
+            "array": [
+              "u16",
+              30
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "sweep_to_buyback",
+      "docs": [
+        "Anyone, after a cancel: sends what the pot holds above its rent minimum to the buyback wallet."
+      ],
+      "discriminator": [
+        236,
+        165,
+        98,
+        94,
+        93,
+        27,
+        174,
+        101
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "buyback_wallet",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "sync_pot",
+      "docs": [
+        "Anyone: realizes the pot's free income for the Seals that exist."
+      ],
+      "discriminator": [
+        64,
+        24,
+        206,
+        113,
+        215,
+        125,
+        107,
+        65
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pot",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "vault_withdraw_core",
+      "docs": [
+        "The current owner: moves a Core prize out of the Seal's vault."
+      ],
+      "discriminator": [
+        248,
+        68,
+        221,
+        74,
+        69,
+        243,
+        142,
+        141
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "asset"
+        },
+        {
+          "name": "seal",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  101,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "asset"
+              }
+            ]
+          }
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "asset"
+              }
+            ]
+          }
+        },
+        {
+          "name": "prize",
+          "writable": true
+        },
+        {
+          "name": "prize_collection"
+        },
+        {
+          "name": "core_program",
+          "address": "CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "vault_withdraw_token",
+      "docs": [
+        "The current owner: moves tokens out of the Seal's vault."
+      ],
+      "discriminator": [
+        117,
+        156,
+        253,
+        162,
+        122,
+        167,
+        119,
+        28
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "asset"
+        },
+        {
+          "name": "seal",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  101,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "asset"
+              }
+            ]
+          }
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "asset"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "vault_token",
+          "writable": true
+        },
+        {
+          "name": "owner_token",
+          "writable": true
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Config",
+      "discriminator": [
+        155,
+        12,
+        170,
+        224,
+        30,
+        250,
+        204,
+        130
+      ]
+    },
+    {
+      "name": "Pending",
+      "discriminator": [
+        36,
+        180,
+        147,
+        170,
+        72,
+        175,
+        173,
+        126
+      ]
+    },
+    {
+      "name": "Seal",
+      "discriminator": [
+        162,
+        149,
+        250,
+        10,
+        100,
+        125,
+        36,
+        168
+      ]
+    },
+    {
+      "name": "State",
+      "discriminator": [
+        216,
+        146,
+        107,
+        94,
+        104,
+        75,
+        182,
+        177
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "AdminAccepted",
+      "discriminator": [
+        174,
+        12,
+        76,
+        139,
+        158,
+        99,
+        110,
+        254
+      ]
+    },
+    {
+      "name": "AdminProposed",
+      "discriminator": [
+        129,
+        249,
+        226,
+        227,
+        199,
+        82,
+        110,
+        243
+      ]
+    },
+    {
+      "name": "ArtSet",
+      "discriminator": [
+        16,
+        146,
+        4,
+        63,
+        255,
+        92,
+        67,
+        64
+      ]
+    },
+    {
+      "name": "CollectionCreated",
+      "discriminator": [
+        69,
+        167,
+        76,
+        142,
+        182,
+        183,
+        233,
+        139
+      ]
+    },
+    {
+      "name": "ConfigInitialized",
+      "discriminator": [
+        181,
+        49,
+        200,
+        156,
+        19,
+        167,
+        178,
+        91
+      ]
+    },
+    {
+      "name": "GenesisShared",
+      "discriminator": [
+        171,
+        178,
+        103,
+        98,
+        101,
+        183,
+        185,
+        72
+      ]
+    },
+    {
+      "name": "MintOpened",
+      "discriminator": [
+        236,
+        206,
+        167,
+        132,
+        191,
+        2,
+        94,
+        32
+      ]
+    },
+    {
+      "name": "PausedSet",
+      "discriminator": [
+        171,
+        125,
+        127,
+        156,
+        233,
+        81,
+        68,
+        66
+      ]
+    },
+    {
+      "name": "PotSynced",
+      "discriminator": [
+        6,
+        32,
+        208,
+        101,
+        3,
+        179,
+        136,
+        106
+      ]
+    },
+    {
+      "name": "PriceChangeApplied",
+      "discriminator": [
+        143,
+        143,
+        96,
+        234,
+        176,
+        216,
+        203,
+        202
+      ]
+    },
+    {
+      "name": "PriceChangeCancelled",
+      "discriminator": [
+        247,
+        58,
+        63,
+        217,
+        230,
+        96,
+        157,
+        148
+      ]
+    },
+    {
+      "name": "PriceChangeQueued",
+      "discriminator": [
+        206,
+        202,
+        84,
+        34,
+        163,
+        109,
+        30,
+        191
+      ]
+    },
+    {
+      "name": "PublicMintsOpened",
+      "discriminator": [
+        102,
+        8,
+        63,
+        124,
+        1,
+        188,
+        182,
+        65
+      ]
+    },
+    {
+      "name": "ReserveMinted",
+      "discriminator": [
+        174,
+        128,
+        70,
+        99,
+        201,
+        221,
+        221,
+        81
+      ]
+    },
+    {
+      "name": "RuleSetApplied",
+      "discriminator": [
+        149,
+        49,
+        70,
+        70,
+        30,
+        22,
+        137,
+        191
+      ]
+    },
+    {
+      "name": "RuleSetCancelled",
+      "discriminator": [
+        164,
+        185,
+        208,
+        107,
+        76,
+        248,
+        190,
+        87
+      ]
+    },
+    {
+      "name": "RuleSetQueued",
+      "discriminator": [
+        182,
+        128,
+        235,
+        54,
+        215,
+        80,
+        193,
+        14
+      ]
+    },
+    {
+      "name": "SealCancelled",
+      "discriminator": [
+        119,
+        138,
+        89,
+        212,
+        105,
+        113,
+        17,
+        212
+      ]
+    },
+    {
+      "name": "SealForfeited",
+      "discriminator": [
+        151,
+        77,
+        133,
+        231,
+        96,
+        210,
+        172,
+        252
+      ]
+    },
+    {
+      "name": "SealMinted",
+      "discriminator": [
+        229,
+        42,
+        81,
+        39,
+        126,
+        1,
+        67,
+        232
+      ]
+    },
+    {
+      "name": "SweptToBuyback",
+      "discriminator": [
+        12,
+        168,
+        106,
+        235,
+        46,
+        95,
+        225,
+        229
+      ]
+    },
+    {
+      "name": "TeamNumbersSet",
+      "discriminator": [
+        52,
+        157,
+        126,
+        155,
+        22,
+        171,
+        237,
+        129
+      ]
+    },
+    {
+      "name": "VaultClaimed",
+      "discriminator": [
+        232,
+        48,
+        41,
+        194,
+        218,
+        163,
+        56,
+        86
+      ]
+    },
+    {
+      "name": "VaultWithdrawn",
+      "discriminator": [
+        238,
+        9,
+        219,
+        172,
+        188,
+        77,
+        72,
+        104
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NotUpgradeAuthority",
+      "msg": "The signer is not the upgrade authority of this program"
+    },
+    {
+      "code": 6001,
+      "name": "NotAdmin",
+      "msg": "The signer is not the admin set in Config"
+    },
+    {
+      "code": 6002,
+      "name": "NotReserveSigner",
+      "msg": "The signer is not the reserve signer set in Config"
+    },
+    {
+      "code": 6003,
+      "name": "NotAssetOwner",
+      "msg": "The signer does not own this Seal"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidConfigKey",
+      "msg": "A config key is the default (all zero) key or is not allowed"
+    },
+    {
+      "code": 6005,
+      "name": "PinMismatch",
+      "msg": "A pinned account does not match what the venue or the mint says"
+    },
+    {
+      "code": 6006,
+      "name": "MintNotPinned",
+      "msg": "The mint is not the pinned $EDICT mint"
+    },
+    {
+      "code": 6007,
+      "name": "PoolNotPinned",
+      "msg": "The pool or config is not the pinned one"
+    },
+    {
+      "code": 6008,
+      "name": "VaultNotPinned",
+      "msg": "The vault is not the pinned one"
+    },
+    {
+      "code": 6009,
+      "name": "WrongVenueProgram",
+      "msg": "The venue program is not the pinned program"
+    },
+    {
+      "code": 6010,
+      "name": "WrongAuthority",
+      "msg": "A pool authority, event authority or program account is not the expected constant"
+    },
+    {
+      "code": 6011,
+      "name": "WrongTokenAccount",
+      "msg": "A token account is not the swapper's pinned associated account, or does not belong to the signer"
+    },
+    {
+      "code": 6012,
+      "name": "WrongTokenProgram",
+      "msg": "The token program does not own the account or is not the pinned one"
+    },
+    {
+      "code": 6013,
+      "name": "PoolNotTrading",
+      "msg": "$EDICT's LaunchLab pool is not trading on its curve (the raise is complete or it has migrated): use the CPMM mint once the pool has migrated"
+    },
+    {
+      "code": 6014,
+      "name": "Paused",
+      "msg": "Public mints are paused"
+    },
+    {
+      "code": 6015,
+      "name": "Cancelled",
+      "msg": "The Seal is cancelled"
+    },
+    {
+      "code": 6016,
+      "name": "NotOpen",
+      "msg": "The mint is not open yet: no team Seal has been minted"
+    },
+    {
+      "code": 6017,
+      "name": "AlreadyOpen",
+      "msg": "The mint is already open"
+    },
+    {
+      "code": 6018,
+      "name": "ReserveIncomplete",
+      "msg": "Public mints and genesis wait until all 30 team Seals exist"
+    },
+    {
+      "code": 6019,
+      "name": "ReserveComplete",
+      "msg": "All 30 team Seals already exist"
+    },
+    {
+      "code": 6020,
+      "name": "SoldOut",
+      "msg": "Every public Seal has been minted"
+    },
+    {
+      "code": 6021,
+      "name": "NotTeamNumber",
+      "msg": "This number is not a team number"
+    },
+    {
+      "code": 6022,
+      "name": "TeamNumberNotMinted",
+      "msg": "A team number cannot go to a public mint"
+    },
+    {
+      "code": 6023,
+      "name": "NumberTaken",
+      "msg": "This number already exists"
+    },
+    {
+      "code": 6024,
+      "name": "TeamNumbersNotSet",
+      "msg": "The team numbers have not been set"
+    },
+    {
+      "code": 6025,
+      "name": "TeamNumbersAlreadySet",
+      "msg": "The team numbers are already set"
+    },
+    {
+      "code": 6026,
+      "name": "InvalidTeamNumbers",
+      "msg": "The team numbers are not 30 distinct numbers from #1 to #250"
+    },
+    {
+      "code": 6027,
+      "name": "ArtLocked",
+      "msg": "The art is locked: the mint is open"
+    },
+    {
+      "code": 6028,
+      "name": "ArtNotSet",
+      "msg": "The art (base URI) has not been set"
+    },
+    {
+      "code": 6029,
+      "name": "InvalidUri",
+      "msg": "The base URI is not 8 to 96 ASCII bytes ending with a slash"
+    },
+    {
+      "code": 6030,
+      "name": "ZeroAmount",
+      "msg": "An amount is zero"
+    },
+    {
+      "code": 6031,
+      "name": "SlippageExceeded",
+      "msg": "The swap delivered less than min_out"
+    },
+    {
+      "code": 6032,
+      "name": "NothingReceived",
+      "msg": "The swap delivered no $EDICT"
+    },
+    {
+      "code": 6033,
+      "name": "NothingSpent",
+      "msg": "The venue spent no wSOL"
+    },
+    {
+      "code": 6034,
+      "name": "Overspent",
+      "msg": "The venue spent more wSOL than the buyer offered"
+    },
+    {
+      "code": 6035,
+      "name": "BurnMismatch",
+      "msg": "The burn did not bring the $EDICT balance back"
+    },
+    {
+      "code": 6036,
+      "name": "BurnOutOfBounds",
+      "msg": "The burn amount is outside the bounds of Config"
+    },
+    {
+      "code": 6037,
+      "name": "InvalidFactor",
+      "msg": "The factor is below 1.0 or the schedule overflows"
+    },
+    {
+      "code": 6038,
+      "name": "NothingQueued",
+      "msg": "Nothing is queued"
+    },
+    {
+      "code": 6039,
+      "name": "AlreadyQueued",
+      "msg": "A change is already queued"
+    },
+    {
+      "code": 6040,
+      "name": "TimelockActive",
+      "msg": "The timelock of the queued change has not passed"
+    },
+    {
+      "code": 6041,
+      "name": "InvalidRuleSet",
+      "msg": "The rule set is empty of the System Program, has too many entries or repeats a program"
+    },
+    {
+      "code": 6042,
+      "name": "GenesisAlreadyShared",
+      "msg": "Genesis is already shared"
+    },
+    {
+      "code": 6043,
+      "name": "GenesisWindowOpen",
+      "msg": "The 24 hour genesis window has not passed"
+    },
+    {
+      "code": 6044,
+      "name": "NothingToClaim",
+      "msg": "There is nothing to claim or withdraw"
+    },
+    {
+      "code": 6045,
+      "name": "InsufficientPot",
+      "msg": "The pot does not hold the amount above its rent minimum"
+    },
+    {
+      "code": 6046,
+      "name": "InvariantBroken",
+      "msg": "An internal invariant of the pot accounting is broken"
+    },
+    {
+      "code": 6047,
+      "name": "MathOverflow",
+      "msg": "Arithmetic overflow"
+    },
+    {
+      "code": 6048,
+      "name": "PoolNotMigrated",
+      "msg": "$EDICT's LaunchLab pool has not migrated to CPMM yet, or the CPMM pool does not exist"
+    },
+    {
+      "code": 6049,
+      "name": "CollectionAlreadySet",
+      "msg": "The collection is already created"
+    },
+    {
+      "code": 6050,
+      "name": "WrongCollection",
+      "msg": "The collection is not the pinned one or is not a Seal asset"
+    },
+    {
+      "code": 6051,
+      "name": "WrongCoreProgram",
+      "msg": "The Core program account is not the Metaplex Core program"
+    },
+    {
+      "code": 6052,
+      "name": "InvalidArgument",
+      "msg": "An argument is out of its range"
+    },
+    {
+      "code": 6053,
+      "name": "SyncIncomplete",
+      "msg": "Pot income is not fully synced: put sync_pot instructions before this one"
+    },
+    {
+      "code": 6054,
+      "name": "AssetNotBurned",
+      "msg": "The asset is not a burned Core asset"
+    },
+    {
+      "code": 6055,
+      "name": "AlreadyForfeited",
+      "msg": "This Seal was already forfeited"
+    }
+  ],
+  "types": [
+    {
+      "name": "AdminAccepted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AdminProposed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "new_admin",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ArtSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "base_uri",
+            "type": "string"
+          },
+          {
+            "name": "art_hash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "CollectionCreated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "collection",
+            "type": "pubkey"
+          },
+          {
+            "name": "royalty_bps",
+            "type": "u16"
+          },
+          {
+            "name": "pot_creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "treasury_creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "rule_set_len",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Config",
+      "docs": [
+        "`Config`: the singleton `[\"config\"]`. Written by `init_config`, `init_collection` and the admin instructions."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "docs": [
+              "Squads vault on mainnet. Admin instructions and nothing else; it can never move a holder's money."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "reserve_signer",
+            "docs": [
+              "The owner wallet: the only signer of `mint_reserve`. Fixed at init."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "reserve_recipient",
+            "docs": [
+              "The Treasury: the owner of every team Seal. Fixed at init."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "treasury",
+            "docs": [
+              "Receives 40% of a mint's payment and 40% of every royalty. Fixed at init."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "buyback_wallet",
+            "docs": [
+              "The only destination of a cancel. Fixed at init."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "edict_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "edict_token_program",
+            "type": "pubkey"
+          },
+          {
+            "name": "swapper_edict_ata",
+            "docs": [
+              "The swapper PDA's associated $EDICT and wSOL accounts, computed once at init (P2-00: a key compare per mint)."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "swapper_wsol_ata",
+            "type": "pubkey"
+          },
+          {
+            "name": "launchlab_program",
+            "docs": [
+              "Raydium LaunchLab: the program and every account of `buy_exact_in` on $EDICT's pool, read from the pool or derived",
+              "at init."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "ll_authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "ll_event_authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "ll_global_config",
+            "type": "pubkey"
+          },
+          {
+            "name": "ll_platform_config",
+            "type": "pubkey"
+          },
+          {
+            "name": "ll_pool",
+            "type": "pubkey"
+          },
+          {
+            "name": "ll_base_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "ll_quote_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "ll_platform_fee_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "ll_creator_fee_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm_program",
+            "docs": [
+              "Raydium CPMM: the program and the graduated pool of $EDICT, DERIVED at init from the CPMM config the platform names",
+              "(the pool exists only after the migration; a mint on it also requires the LaunchLab pool to say \"migrated\")."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm_authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm_config",
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm_pool",
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm_vault_edict",
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm_vault_wsol",
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm_observation",
+            "type": "pubkey"
+          },
+          {
+            "name": "collection",
+            "docs": [
+              "The Core collection (the default key until `init_collection`)."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "art_hash",
+            "docs": [
+              "sha256 of the art manifest, published with the metadata. Not checkable on chain."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "base_uri",
+            "docs": [
+              "The metadata folder URI; the program builds `base_uri + NNN + \".json\"` (three digits, as the files are named)."
+            ],
+            "type": "string"
+          },
+          {
+            "name": "paused",
+            "type": "bool"
+          },
+          {
+            "name": "cancelled",
+            "type": "bool"
+          },
+          {
+            "name": "team_set",
+            "type": "bool"
+          },
+          {
+            "name": "art_locked",
+            "type": "bool"
+          },
+          {
+            "name": "team_mask",
+            "docs": [
+              "The 30 team numbers: bit `number - 1`."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "payment_lamports",
+            "docs": [
+              "The fixed payment of a public mint (G-NFT-PRICE): 60% to the pot, 40% to the Treasury."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "base_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "factor_bps",
+            "type": "u32"
+          },
+          {
+            "name": "min_burn_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "max_burn_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "burn_by_tier",
+            "docs": [
+              "The burn amount of tiers 0 to 2 (derived from the base and the factor, floor at every step)."
+            ],
+            "type": {
+              "array": [
+                "u64",
+                3
+              ]
+            }
+          },
+          {
+            "name": "config_bump",
+            "type": "u8"
+          },
+          {
+            "name": "state_bump",
+            "type": "u8"
+          },
+          {
+            "name": "pending_bump",
+            "type": "u8"
+          },
+          {
+            "name": "swapper_bump",
+            "type": "u8"
+          },
+          {
+            "name": "authority_bump",
+            "type": "u8"
+          },
+          {
+            "name": "pot_bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ConfigInitialized",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "reserve_signer",
+            "type": "pubkey"
+          },
+          {
+            "name": "reserve_recipient",
+            "type": "pubkey"
+          },
+          {
+            "name": "treasury",
+            "type": "pubkey"
+          },
+          {
+            "name": "buyback_wallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "edict_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "ll_pool",
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm_pool",
+            "type": "pubkey"
+          },
+          {
+            "name": "payment_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "base_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "factor_bps",
+            "type": "u32"
+          },
+          {
+            "name": "burn_by_tier",
+            "type": {
+              "array": [
+                "u64",
+                3
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "GenesisShared",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "eligible",
+            "type": "u16"
+          },
+          {
+            "name": "per_seal",
+            "type": "u64"
+          },
+          {
+            "name": "remainder",
+            "type": "u64"
+          },
+          {
+            "name": "trigger",
+            "docs": [
+              "0 = the 100th public mint, 1 = `finalize_genesis` after 24 hours, 2 = the first public mint after the 24 hours."
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "InitCollectionArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "uri",
+            "docs": [
+              "The collection's own metadata URI."
+            ],
+            "type": "string"
+          },
+          {
+            "name": "rules",
+            "docs": [
+              "The royalty allow list: the System Program plus the verified marketplaces (design D3), at most 8."
+            ],
+            "type": {
+              "vec": "pubkey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "InitConfigArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "docs": [
+              "Squads vault on mainnet."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "reserve_signer",
+            "docs": [
+              "The owner wallet, the only signer of `mint_reserve`."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "reserve_recipient",
+            "docs": [
+              "The Treasury, the owner of every team Seal."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "treasury",
+            "docs": [
+              "The Treasury, the payee of 40% of the payment and the 40% royalty creator."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "buyback_wallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "launchlab_program",
+            "docs": [
+              "Raydium LaunchLab and CPMM of this cluster (they differ between mainnet and devnet)."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm_program",
+            "type": "pubkey"
+          },
+          {
+            "name": "payment_lamports",
+            "docs": [
+              "The fixed payment of a public mint (G-NFT-PRICE), 60% pot / 40% Treasury."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "base_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "factor_bps",
+            "type": "u32"
+          },
+          {
+            "name": "min_burn_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "max_burn_lamports",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MintOpened",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "opened_at",
+            "type": "i64"
+          },
+          {
+            "name": "genesis_locked",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PausedSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "paused",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Pending",
+      "docs": [
+        "`Pending`: the singleton `[\"pending\"]`: the queued price change, the queued rule set, a proposed admin."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "pending_admin",
+            "docs": [
+              "The default key when no rotation is proposed."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "price_active",
+            "type": "bool"
+          },
+          {
+            "name": "price_base",
+            "type": "u64"
+          },
+          {
+            "name": "price_factor_bps",
+            "type": "u32"
+          },
+          {
+            "name": "price_eta",
+            "type": "i64"
+          },
+          {
+            "name": "rules_active",
+            "type": "bool"
+          },
+          {
+            "name": "rules_eta",
+            "type": "i64"
+          },
+          {
+            "name": "rules_count",
+            "type": "u8"
+          },
+          {
+            "name": "rules",
+            "type": {
+              "array": [
+                "pubkey",
+                8
+              ]
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PotSynced",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "realized",
+            "docs": [
+              "Income realized now, all credited through the accumulator."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "minted",
+            "type": "u16"
+          },
+          {
+            "name": "active",
+            "docs": [
+              "The divisor of this sync: the Seals that share income (minted minus forfeited)."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "acc_per_seal",
+            "type": "u128"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PriceChangeApplied",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "from_tier",
+            "type": "u8"
+          },
+          {
+            "name": "base_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "factor_bps",
+            "type": "u32"
+          },
+          {
+            "name": "burn_by_tier",
+            "type": {
+              "array": [
+                "u64",
+                3
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "PriceChangeCancelled",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "base_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "factor_bps",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PriceChangeQueued",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "base_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "factor_bps",
+            "type": "u32"
+          },
+          {
+            "name": "eta",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PublicMintsOpened",
+      "docs": [
+        "The 30th team Seal exists: public mints are possible and the 24 hour genesis window starts (review R3)."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "public_open_at",
+            "type": "i64"
+          },
+          {
+            "name": "genesis_window_ends",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ReserveMinted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "number",
+            "type": "u16"
+          },
+          {
+            "name": "seq",
+            "type": "u16"
+          },
+          {
+            "name": "asset",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RuleSetApplied",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RuleSetCancelled",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RuleSetQueued",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "type": "u8"
+          },
+          {
+            "name": "eta",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Seal",
+      "docs": [
+        "`Seal`: one per Seal, `[\"seal\", asset]`."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "type": "pubkey"
+          },
+          {
+            "name": "number",
+            "docs": [
+              "1 to 250: its art."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "seq",
+            "docs": [
+              "The mint sequence, 1 to 250 in the order minted (team first)."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "is_team",
+            "type": "bool"
+          },
+          {
+            "name": "genesis_eligible",
+            "type": "bool"
+          },
+          {
+            "name": "genesis_claimed",
+            "type": "bool"
+          },
+          {
+            "name": "forfeited",
+            "docs": [
+              "Set by `forfeit_burned`: the Core asset was burned and the Seal left the active set."
+            ],
+            "type": "bool"
+          },
+          {
+            "name": "acc_snapshot",
+            "docs": [
+              "The accumulator value at the mint, advanced by every claim (the fraction is kept)."
+            ],
+            "type": "u128"
+          },
+          {
+            "name": "sol_claimed",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SealCancelled",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "swept",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SealForfeited",
+      "docs": [
+        "A burned Seal left the active set (`forfeit_burned`)."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "number",
+            "type": "u16"
+          },
+          {
+            "name": "asset",
+            "type": "pubkey"
+          },
+          {
+            "name": "released_acc",
+            "docs": [
+              "The unclaimed accumulator share returned to the pot as income, in lamports (rounded down; the exact amount is scaled)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "released_genesis",
+            "docs": [
+              "The unclaimed genesis share returned to the pot as income, in lamports."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "active",
+            "docs": [
+              "The Seals that share income from now on."
+            ],
+            "type": "u16"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SealMinted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "number",
+            "type": "u16"
+          },
+          {
+            "name": "seq",
+            "type": "u16"
+          },
+          {
+            "name": "asset",
+            "type": "pubkey"
+          },
+          {
+            "name": "buyer",
+            "type": "pubkey"
+          },
+          {
+            "name": "tier",
+            "type": "u8"
+          },
+          {
+            "name": "burn_lamports",
+            "docs": [
+              "The burn amount of the tier, in SOL lamports, the buyer offered to the swap."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "wsol_spent",
+            "docs": [
+              "What the venue actually took (a partial fill takes less)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "received",
+            "docs": [
+              "$EDICT units received (balance difference), all burned."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "burned",
+            "type": "u64"
+          },
+          {
+            "name": "refunded_lamports",
+            "docs": [
+              "Lamports of the wSOL account closed to the buyer (the unspent part of a partial fill plus the account rent)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "pot_in",
+            "type": "u64"
+          },
+          {
+            "name": "treasury_in",
+            "type": "u64"
+          },
+          {
+            "name": "venue",
+            "docs": [
+              "0 = LaunchLab curve, 1 = CPMM pool."
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "genesis_eligible",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "State",
+      "docs": [
+        "`State`: the singleton `[\"state\"]`. Written by every mint, claim and crank."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "minted",
+            "docs": [
+              "The supply and sequence counter: every Seal ever minted, burned or not (at most 250). The number of a burned Seal",
+              "stays set in `minted_mask`, so it can never be minted again."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "active",
+            "docs": [
+              "The Seals that share income: `minted` minus the forfeited (burned) ones. The divisor `n` of the accumulator."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "reserve_minted",
+            "type": "u8"
+          },
+          {
+            "name": "public_minted",
+            "type": "u16"
+          },
+          {
+            "name": "next_public",
+            "docs": [
+              "The lowest candidate for the next public number."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "opened_at",
+            "docs": [
+              "0 until the first `mint_reserve`: the art is locked and the genesis amount is locked at this moment."
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "public_open_at",
+            "docs": [
+              "0 until the 30th team Seal exists: public mints are possible from this moment and the 24 hour genesis window",
+              "starts here (review R3: a team batch that takes longer than 24 hours must not let a finalize precede every public mint)."
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "minted_mask",
+            "docs": [
+              "The numbers that exist: bit `number - 1`."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "acc_per_seal",
+            "docs": [
+              "The reward-per-Seal accumulator, lamports x 10^12."
+            ],
+            "type": "u128"
+          },
+          {
+            "name": "owed_scaled",
+            "docs": [
+              "Accumulator shares credited and not yet paid, lamports x 10^12 (exact; the reserve is its ceiling)."
+            ],
+            "type": "u128"
+          },
+          {
+            "name": "genesis_locked",
+            "docs": [
+              "The amount locked at the opening, apart from the regular pot, until it is shared."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "genesis_owed",
+            "docs": [
+              "The shares created at the sharing and not yet paid."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "genesis_shared",
+            "type": "bool"
+          },
+          {
+            "name": "genesis_eligible_count",
+            "docs": [
+              "Seals eligible for genesis: 30 team plus public mints 1 to 100 minted before the sharing."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "genesis_per_seal",
+            "type": "u64"
+          },
+          {
+            "name": "income_realized_total",
+            "type": "u64"
+          },
+          {
+            "name": "claimed_total",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SweptToBuyback",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TeamNumbersSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VaultClaimed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "acc_share",
+            "type": "u64"
+          },
+          {
+            "name": "genesis_share",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VaultWithdrawn",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "asset",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "kind",
+            "docs": [
+              "0 = token, 1 = Core asset."
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "item",
+            "docs": [
+              "The mint (token) or the prize asset (Core)."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}

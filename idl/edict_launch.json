@@ -1,0 +1,1500 @@
+{
+  "address": "2pvGJ7VtCkmM6AnS2k1Dx3hyoV7H67ucZhixWPKuXAXs",
+  "metadata": {
+    "name": "edict_launch",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Edict on Raydium LaunchLab: one LaunchLab platform per token owned by a program PDA, per-pool fee claims forwarded to the token's vault, and the $EDICT fee schedule (docs/validation/EDICT_LAUNCH.md)."
+  },
+  "instructions": [
+    {
+      "name": "claim_cpmm_creator_fee",
+      "docs": [
+        "Anyone: after graduation, collects the CPMM creator fee (paid to `auth_t`) and forwards it to the vault."
+      ],
+      "discriminator": [
+        152,
+        33,
+        240,
+        39,
+        3,
+        63,
+        229,
+        190
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "state.mint",
+                "account": "TokenState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "auth",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "state.mint",
+                "account": "TokenState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "cpmm_program"
+        },
+        {
+          "name": "cpmm_authority"
+        },
+        {
+          "name": "pool",
+          "writable": true
+        },
+        {
+          "name": "token_0_vault",
+          "writable": true
+        },
+        {
+          "name": "token_1_vault",
+          "writable": true
+        },
+        {
+          "name": "vault_0_mint"
+        },
+        {
+          "name": "vault_1_mint"
+        },
+        {
+          "name": "creator_token_0",
+          "writable": true
+        },
+        {
+          "name": "creator_token_1",
+          "writable": true
+        },
+        {
+          "name": "token_0_program"
+        },
+        {
+          "name": "token_1_program"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "amm_config"
+        },
+        {
+          "name": "creator_fee_share"
+        },
+        {
+          "name": "vault_quote",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "claim_fee_key",
+      "docs": [
+        "Anyone: after graduation, collects the Fee Key's LP fees straight into the vault's token accounts."
+      ],
+      "discriminator": [
+        18,
+        122,
+        39,
+        10,
+        131,
+        38,
+        177,
+        46
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "state.mint",
+                "account": "TokenState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "auth",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "state.mint",
+                "account": "TokenState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "lock_program"
+        },
+        {
+          "name": "lock_authority"
+        },
+        {
+          "name": "fee_nft_account"
+        },
+        {
+          "name": "locked_liquidity",
+          "writable": true
+        },
+        {
+          "name": "cpmm_program"
+        },
+        {
+          "name": "cpmm_authority"
+        },
+        {
+          "name": "pool",
+          "writable": true
+        },
+        {
+          "name": "lp_mint",
+          "writable": true
+        },
+        {
+          "name": "recipient_0",
+          "writable": true
+        },
+        {
+          "name": "recipient_1",
+          "writable": true
+        },
+        {
+          "name": "token_0_vault",
+          "writable": true
+        },
+        {
+          "name": "token_1_vault",
+          "writable": true
+        },
+        {
+          "name": "vault_0_mint"
+        },
+        {
+          "name": "vault_1_mint"
+        },
+        {
+          "name": "locked_lp_vault",
+          "writable": true
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "token_program_2022"
+        },
+        {
+          "name": "memo_program"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "fee_lp_amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "claim_platform_fee",
+      "docs": [
+        "Anyone: claims the token platform's fee vault and forwards it to the token's vault."
+      ],
+      "discriminator": [
+        156,
+        39,
+        208,
+        135,
+        76,
+        237,
+        61,
+        72
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "docs": [
+            "Pays the transaction only; never holds funds."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "state.mint",
+                "account": "TokenState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "auth",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "state.mint",
+                "account": "TokenState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_vault_authority"
+        },
+        {
+          "name": "platform_config",
+          "writable": true
+        },
+        {
+          "name": "platform_fee_vault",
+          "writable": true
+        },
+        {
+          "name": "auth_quote",
+          "writable": true
+        },
+        {
+          "name": "vault_quote",
+          "writable": true
+        },
+        {
+          "name": "quote_mint",
+          "address": "So11111111111111111111111111111111111111112"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "launchlab_program"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "fee_step",
+      "docs": [
+        "Anyone (the keeper on time): `$EDICT` only, claim first, then lower the rate as the schedule allows."
+      ],
+      "discriminator": [
+        170,
+        140,
+        56,
+        41,
+        14,
+        11,
+        38,
+        48
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "docs": [
+            "Pays the transaction only; never holds funds."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "state.mint",
+                "account": "TokenState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "auth",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "state.mint",
+                "account": "TokenState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_vault_authority"
+        },
+        {
+          "name": "platform_config",
+          "writable": true
+        },
+        {
+          "name": "platform_fee_vault",
+          "writable": true
+        },
+        {
+          "name": "auth_quote",
+          "writable": true
+        },
+        {
+          "name": "vault_quote",
+          "writable": true
+        },
+        {
+          "name": "quote_mint",
+          "address": "So11111111111111111111111111111111111111112"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "launchlab_program"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "init_config",
+      "docs": [
+        "Upgrade authority, once: pins the foreign programs and accounts."
+      ],
+      "discriminator": [
+        23,
+        235,
+        115,
+        232,
+        168,
+        96,
+        1,
+        231
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "global_config"
+        },
+        {
+          "name": "cpswap_config"
+        },
+        {
+          "name": "this_program",
+          "address": "2pvGJ7VtCkmM6AnS2k1Dx3hyoV7H67ucZhixWPKuXAXs"
+        },
+        {
+          "name": "program_data"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "InitConfigArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "open_platform",
+      "docs": [
+        "Anyone holding the new mint's keypair: creates the token's platform and opens it for exactly one launch."
+      ],
+      "discriminator": [
+        170,
+        134,
+        138,
+        55,
+        168,
+        220,
+        93,
+        197
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "mint",
+          "docs": [
+            "The new token's mint keypair: only the holder of the launch transaction can open its platform."
+          ],
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "auth",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "platform_config",
+          "writable": true
+        },
+        {
+          "name": "cpswap_config"
+        },
+        {
+          "name": "global_config"
+        },
+        {
+          "name": "allow_config",
+          "writable": true
+        },
+        {
+          "name": "launchlab_program"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "OpenArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "seal_platform",
+      "docs": [
+        "Same transaction as the launch, after it: closes the allow-config and checks the pool."
+      ],
+      "discriminator": [
+        139,
+        245,
+        46,
+        65,
+        98,
+        222,
+        103,
+        49
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "state.mint",
+                "account": "TokenState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "auth",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "state.mint",
+                "account": "TokenState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "platform_config"
+        },
+        {
+          "name": "global_config"
+        },
+        {
+          "name": "allow_config",
+          "writable": true
+        },
+        {
+          "name": "pool_state"
+        },
+        {
+          "name": "launchlab_program"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "event_authority"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "set_admin",
+      "docs": [
+        "Admin: hands the admin role to another key (Squads at G-TREASURY)."
+      ],
+      "discriminator": [
+        251,
+        163,
+        0,
+        52,
+        91,
+        194,
+        187,
+        92
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "config"
+          ]
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "admin",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "set_protocol_mint",
+      "docs": [
+        "Admin: pins `$EDICT`'s mint, allowed only while no token state exists for the mint pinned before."
+      ],
+      "discriminator": [
+        153,
+        12,
+        2,
+        100,
+        238,
+        213,
+        76,
+        104
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "config"
+          ]
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "current_state",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "config.protocol_mint",
+                "account": "Config"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "mint",
+          "type": "pubkey"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Config",
+      "discriminator": [
+        155,
+        12,
+        170,
+        224,
+        30,
+        250,
+        204,
+        130
+      ]
+    },
+    {
+      "name": "TokenState",
+      "discriminator": [
+        218,
+        112,
+        6,
+        149,
+        55,
+        186,
+        168,
+        163
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "FeeClaimed",
+      "discriminator": [
+        202,
+        108,
+        15,
+        80,
+        101,
+        18,
+        217,
+        158
+      ]
+    },
+    {
+      "name": "FeeStepped",
+      "discriminator": [
+        255,
+        101,
+        184,
+        59,
+        18,
+        199,
+        35,
+        144
+      ]
+    },
+    {
+      "name": "TokenOpened",
+      "discriminator": [
+        221,
+        103,
+        192,
+        130,
+        31,
+        158,
+        125,
+        30
+      ]
+    },
+    {
+      "name": "TokenSealed",
+      "discriminator": [
+        30,
+        63,
+        28,
+        219,
+        156,
+        167,
+        26,
+        158
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NotUpgradeAuthority",
+      "msg": "only the upgrade authority may initialise the config"
+    },
+    {
+      "code": 6001,
+      "name": "NotAdmin",
+      "msg": "only the admin may do this"
+    },
+    {
+      "code": 6002,
+      "name": "WrongAccount",
+      "msg": "an account is not the one the config pins"
+    },
+    {
+      "code": 6003,
+      "name": "BadForeignAccount",
+      "msg": "the foreign account has an unexpected owner, size or discriminator"
+    },
+    {
+      "code": 6004,
+      "name": "NotSolQuoted",
+      "msg": "the global config is not SOL-quoted"
+    },
+    {
+      "code": 6005,
+      "name": "ProtocolTokenExists",
+      "msg": "the protocol token already exists; its mint can no longer change"
+    },
+    {
+      "code": 6006,
+      "name": "WrongStatus",
+      "msg": "the token is not in the expected status"
+    },
+    {
+      "code": 6007,
+      "name": "PoolMismatch",
+      "msg": "the pool is not this token's Edict pool"
+    },
+    {
+      "code": 6008,
+      "name": "PoolSettings",
+      "msg": "the pool uses a curve setting Edict does not accept"
+    },
+    {
+      "code": 6009,
+      "name": "WrongVaultAccount",
+      "msg": "the vault account is not the token vault's account for that mint"
+    },
+    {
+      "code": 6010,
+      "name": "ClaimMismatch",
+      "msg": "the claim did not move exactly what the fee vault held"
+    },
+    {
+      "code": 6011,
+      "name": "ForwardMismatch",
+      "msg": "the forward to the vault did not arrive exactly"
+    },
+    {
+      "code": 6012,
+      "name": "BaseCreatorFee",
+      "msg": "a creator fee arrived in the base token"
+    },
+    {
+      "code": 6013,
+      "name": "NoSchedule",
+      "msg": "this token has no fee schedule, or its schedule is final"
+    },
+    {
+      "code": 6014,
+      "name": "StepTooEarly",
+      "msg": "the schedule does not allow a lower rate yet"
+    },
+    {
+      "code": 6015,
+      "name": "Overflow",
+      "msg": "arithmetic overflow"
+    }
+  ],
+  "types": [
+    {
+      "name": "Config",
+      "docs": [
+        "Set once by the upgrade authority. Every foreign program and account the instructions use is pinned here."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "launchlab",
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm",
+            "type": "pubkey"
+          },
+          {
+            "name": "lock",
+            "type": "pubkey"
+          },
+          {
+            "name": "global_config",
+            "docs": [
+              "The LaunchLab global config (SOL quote) every Edict token launches on."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "cpswap_config",
+            "docs": [
+              "The CPMM config of the graduated pool (mainnet index 22)."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "protocol_mint",
+            "docs": [
+              "`$EDICT`'s mint (a fresh keypair made before the launch), or the default key while it is not set. A token with",
+              "this mint opens at 5% and follows the fee schedule."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FeeClaimed",
+      "docs": [
+        "A claim forwarded to the vault. `quote` lamports of wSOL reached the vault's wSOL account (and `base` units its base",
+        "account, Fee Key only). `excess` is the part of `quote` above the 1% base rate (0 except for `$EDICT` before its",
+        "schedule is final); `rate` is the single platform fee rate the claimed chunk was earned at."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "source",
+            "type": "u8"
+          },
+          {
+            "name": "quote",
+            "type": "u64"
+          },
+          {
+            "name": "base",
+            "type": "u64"
+          },
+          {
+            "name": "rate",
+            "type": "u64"
+          },
+          {
+            "name": "excess",
+            "type": "u64"
+          },
+          {
+            "name": "seq",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FeeStepped",
+      "docs": [
+        "`fee_step`: the platform fee rate went from `from` to `to`, `elapsed` seconds after the pool was created."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "from",
+            "type": "u64"
+          },
+          {
+            "name": "to",
+            "type": "u64"
+          },
+          {
+            "name": "elapsed",
+            "type": "i64"
+          },
+          {
+            "name": "at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "InitConfigArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "launchlab",
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm",
+            "type": "pubkey"
+          },
+          {
+            "name": "lock",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OpenArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "vault",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenOpened",
+      "docs": [
+        "`open_platform`: the token's platform exists and is open for its one launch."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "platform_config",
+            "type": "pubkey"
+          },
+          {
+            "name": "fee_rate",
+            "type": "u64"
+          },
+          {
+            "name": "protocol",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenSealed",
+      "docs": [
+        "`seal_platform`: the pool exists, the allow-config is closed (no other pool can ever use this platform)."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "pool",
+            "type": "pubkey"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenState",
+      "docs": [
+        "One per token, seeds `[\"token\", mint]`."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "vault",
+            "docs": [
+              "The token's Edict vault (the keeper's per-coin vault). Every claimed quote amount is forwarded to its wSOL",
+              "account, every Fee Key amount is paid into its token accounts."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "platform_config",
+            "type": "pubkey"
+          },
+          {
+            "name": "pool",
+            "docs": [
+              "The LaunchLab pool, set by `seal_platform`."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "protocol",
+            "docs": [
+              "1 for `$EDICT` (the fee schedule applies), 0 otherwise."
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "auth_bump",
+            "type": "u8"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "fee_rate",
+            "docs": [
+              "The platform fee rate in force (LaunchLab unit, 10,000 = 1%). Changed only by `fee_step`, after a claim."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "created_at",
+            "docs": [
+              "`unix_timestamp` of the transaction that created the pool (`seal_platform` runs in it)."
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "platform_quote",
+            "docs": [
+              "Totals forwarded to the vault, per source (quote lamports; the Fee Key base side in base units)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "excess_quote",
+            "type": "u64"
+          },
+          {
+            "name": "cpmm_creator_quote",
+            "type": "u64"
+          },
+          {
+            "name": "fee_key_quote",
+            "type": "u64"
+          },
+          {
+            "name": "fee_key_base",
+            "type": "u64"
+          },
+          {
+            "name": "seq",
+            "docs": [
+              "Sequence number of the last `FeeClaimed` event of this token."
+            ],
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}

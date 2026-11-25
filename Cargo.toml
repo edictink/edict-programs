@@ -1,0 +1,33 @@
+[workspace]
+members = ["programs/*"]
+resolver = "2"
+
+# The Solana version `solana-verify` builds with (it reads this first; Cargo.lock's `solana-program` is the CRATE version 3.0.0 and would pick the
+# wrong image). It equals `solana_version` of Anchor.toml.
+[workspace.metadata.cli]
+solana = "4.3.0"
+
+[workspace.package]
+edition = "2021"
+# MSRV of the on-chain crates. It must stay at or below the compiler that the SBF
+# platform-tools ship (1.95 for Agave 4.3.0 / platform-tools v1.57), because
+# `cargo build-sbf` enforces it. The host toolchain (rust-toolchain.toml) is newer.
+rust-version = "1.89.0"
+
+# Anchor refuses to build without overflow checks.
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1
+
+[profile.release.build-override]
+opt-level = 3
+incremental = false
+codegen-units = 1
+
+# Both programs are optimised for size (deploy rent); the shared crates are not.
+[profile.release.package.edict_seals]
+opt-level = "z"
+
+[profile.release.package.edict_launch]
+opt-level = "z"
