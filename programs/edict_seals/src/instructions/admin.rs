@@ -1,4 +1,4 @@
-//! The admin instructions (signer must equal `Config.admin`, a Squads vault on mainnet) and the permissionless applies of
+//! The admin instructions (signer must equal `Config.admin`) and the permissionless applies of
 //! queued changes. The admin can never move a holder's money: it can set the art and the team numbers before the opening,
 //! queue a price change or a rule-set change behind the 24 hour timelock, pause public mints,
 //! rotate itself, and cancel the Seal before the opening (the pot then goes to the fixed buyback wallet).

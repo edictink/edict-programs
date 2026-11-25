@@ -27,8 +27,8 @@ pub mod venue;
 
 use instructions::*;
 
-// The program id of the LOCAL / DEV deployment (its secret key was never kept: the program is loaded at genesis of the test
-// validator and of LiteSVM). The devnet and mainnet ids are created at deploy time (gates G-KEYS and G-FUNDS):
+// The program id, the same on every cluster; its keypair is kept for the deploy, and the upgrade authority moves to the owner
+// wallet after it. The admin is a key named at init (no admin key is built into the program).
 // declare_id!, Anchor.toml and the clients are changed together.
 declare_id!("6Eusr5CdS6DMCz9csfvGP24DqLxrPt4sBaeamDijL87f");
 

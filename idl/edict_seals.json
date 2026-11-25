@@ -3241,7 +3241,7 @@
           {
             "name": "admin",
             "docs": [
-              "Squads vault on mainnet. Admin instructions and nothing else; it can never move a holder's money."
+              "The admin key. Admin instructions and nothing else; it can never move a holder's money."
             ],
             "type": "pubkey"
           },
@@ -3604,7 +3604,7 @@
           {
             "name": "admin",
             "docs": [
-              "Squads vault on mainnet."
+              "The admin key."
             ],
             "type": "pubkey"
           },

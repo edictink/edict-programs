@@ -35,7 +35,7 @@ pub mod edict_launch {
         ix::handle_init_config(ctx, args)
     }
 
-    /// Admin: hands the admin role to another key (Squads at G-TREASURY).
+    /// Admin: hands the admin role to another key.
     pub fn set_admin(ctx: Context<AdminOnly>, admin: Pubkey) -> Result<()> {
         ctx.accounts.config.admin = admin;
         Ok(())

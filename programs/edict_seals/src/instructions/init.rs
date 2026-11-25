@@ -18,7 +18,7 @@ use crate::venue::{derive_cpmm, derive_launch, parse_launch_pool};
 
 #[derive(AnchorSerialize, AnchorDeserialize, Clone)]
 pub struct InitConfigArgs {
-    /// Squads vault on mainnet.
+    /// The admin key.
     pub admin: Pubkey,
     /// The owner wallet, the only signer of `mint_reserve`.
     pub reserve_signer: Pubkey,

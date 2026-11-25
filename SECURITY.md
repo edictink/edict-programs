@@ -10,7 +10,7 @@ This repository holds the on-chain programs of Edict:
 ## Reporting a vulnerability
 
 Email **dev@edict.ink** with a description of the issue, the affected program and instruction, and the steps or a transaction that shows it.
-Please do not open a public issue and do not exploit the issue on mainnet beyond what is needed to show it.
+Please do not open a public issue. Do not test against mainnet funds.
 
 We acknowledge a report within 72 hours and keep you informed until it is resolved. Once a fix is deployed we credit the reporter if they wish.
 

@@ -899,7 +899,7 @@
     {
       "name": "set_admin",
       "docs": [
-        "Admin: hands the admin role to another key (Squads at G-TREASURY)."
+        "Admin: hands the admin role to another key."
       ],
       "discriminator": [
         251,

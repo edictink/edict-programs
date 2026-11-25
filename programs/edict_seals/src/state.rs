@@ -12,7 +12,7 @@ use crate::constants::{MASK_BYTES, MAX_RULES, MAX_URI_BYTES, PAYMENT_POT_PERCENT
 #[account]
 #[derive(InitSpace)]
 pub struct Config {
-    /// Squads vault on mainnet. Admin instructions and nothing else; it can never move a holder's money.
+    /// The admin key. Admin instructions and nothing else; it can never move a holder's money.
     pub admin: Pubkey,
     /// The owner wallet: the only signer of `mint_reserve`. Fixed at init.
     pub reserve_signer: Pubkey,
